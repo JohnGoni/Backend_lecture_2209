@@ -3,4 +3,4 @@ exports.randInt =  function(from,to) {
     return Math.ceil(Math.random()*(to-from)+from)
 }
 
-exports.cicleArea = radius => Math.PI * radius * radius;
+exports.circleArea = radius => Math.PI * radius * radius;
