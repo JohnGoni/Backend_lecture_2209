@@ -6,7 +6,7 @@ const server = http.createServer((req,res)=>{
     console.log(pathname);
 
     res.writeHead(200,{'Content-Type':'text/html'})
-    res.end(`<h1>${pathname}<h1>`)
+    res.end(`<h1>${mehthod} : ${pathname}<h1>`)
 })
 
 server.listen(3000, () =>{
