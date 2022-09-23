@@ -18,7 +18,7 @@ SELECT 필드명 FROM 테이블명
 
  SELECT * FROM city;
  SELECT COUNT(*) FROM city;
- SELECT * FROM city WHERE CountryCode ='KOR';		//필드명의 대소문자 구별 X
+ SELECT * FROM city WHERE CountryCode ='KOR';		/* 필드명의 대소문자 구별 X */
 
 # 함수
 # count(*) - 건수
@@ -83,3 +83,24 @@ SELECT country.name, SUM(city.population) FROM city
 SELECT country.Name, city.Name, city.population FROM city 
 	JOIN country ON city.countrycode=country.Code
 	ORDER BY city.population DESC LIMIT 10
+
+#대륙별로 국가숫자, GNP의 합, 평균 국가별 GNP는?
+SELECT continent , round(SUM(gnp),-3) AS gnpsum, 
+round(AVG(gnp),-3) AS gnpAvg FROM country
+	GROUP BY continent;
+
+# 아시아 대륙에서 인구가 가장 많은 도시 10개를 내림차순으로 보여줄 것(대륙명, 국가명, 도시명, 인구수)
+SELECT country.Continent, country.Name, city.Name, city.population
+FROM city JOIN country ON city.countrycode=country.code
+WHERE country.continent='Asia'
+ORDER BY continent DESC LIMIT 10;
+
+# 전 세계에서 인구가 가장 많은 10개 도시에서 사용하는 공식언어는?(도시명, 인구수, 언어명)
+SELECT c.Name,c.Population,l.`Language` FROM city AS c
+	JOIN countrylanguage AS l ON c.countrycode=l.countrycode
+	WHERE l.IsOfficial='T' ORDER BY c.Population desc
+	LIMIT 10
+
+# GNP가 가장 큰 나라 10개(국가명, gnp 단 gnp는 내림차순)
+SELECT Name, GNP FROM country ORDER BY gnp DESC LIMIT 10
+
