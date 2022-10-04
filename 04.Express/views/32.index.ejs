@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <%= include(`${path}/head) %>
+    <%- include(`${path}/head`); %>
 </head>
 <body>
     <%- include(`${path}/navBar`) %>
@@ -16,7 +16,7 @@
                         <th>선수명</th>
                         <th>사진</th>
                         <th>백넘버</th>
-                        <th>&nbsp;&nbsp;포지션&nbsp;&nbsp;</th>
+                        <th>포지션</th>
                         <th>수정/삭제</th>
                     </tr>
                     <% for(let row of rows) { %>
